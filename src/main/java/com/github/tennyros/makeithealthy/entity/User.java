@@ -41,7 +41,10 @@ public class User {
     private String email;
 
     @Column(name = "age", nullable = false)
-    private Integer age;
+    private int age;
+
+    @Enumerated(EnumType.STRING)
+    private Gender gender;
 
     @Column(name = "weight", nullable = false)
     private double weight;
@@ -54,7 +57,7 @@ public class User {
     private Goal goal;
 
     @Column(name = "daily_calories_norm", nullable = false)
-    private double dailyCaloriesNorm;
+    private double dailyCalorieNorm;
 
     @OneToMany(mappedBy = "user", cascade = {ALL}, orphanRemoval = true)
     private List<FoodInTake> foodInTakeList = new ArrayList<>();
