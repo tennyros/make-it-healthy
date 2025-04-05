@@ -1,6 +1,7 @@
 package com.github.tennyros.makeithealthy.entity;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -33,17 +34,8 @@ public class Meal {
     @Column(name = "name", nullable = false)
     private String name;
 
-    @Column(name = "calories", nullable = false)
-    private double calories;
-
-    @Column(name = "proteins", nullable = false)
-    private double proteins;
-
-    @Column(name = "carbs", nullable = false)
-    private double carbs;
-
-    @Column(name = "fats", nullable = false)
-    private double fats;
+    @Embedded
+    private NutritionalInfo nutritionalInfo;
 
     @ManyToMany(mappedBy = "meals")
     private List<FoodInTake> foodInTakes = new ArrayList<>();
