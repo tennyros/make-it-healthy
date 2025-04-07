@@ -31,12 +31,13 @@ public class Meal {
     @Column(name = "id", nullable = false, unique = true)
     private Integer id;
 
-    @Column(name = "name", nullable = false)
+    @Column(name = "name", nullable = false, unique = true)
     private String name;
 
     @Embedded
     private NutritionalInfo nutritionalInfo;
 
+    @Builder.Default
     @ManyToMany(mappedBy = "meals")
     private List<FoodInTake> foodInTakes = new ArrayList<>();
 

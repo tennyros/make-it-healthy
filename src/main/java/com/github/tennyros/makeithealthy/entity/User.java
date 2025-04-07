@@ -56,9 +56,10 @@ public class User {
     @Column(name = "goal", nullable = false)
     private Goal goal;
 
-    @Column(name = "daily_calories_norm", nullable = false)
+    @Column(name = "daily_calorie_norm", nullable = false)
     private double dailyCalorieNorm;
 
+    @Builder.Default
     @OneToMany(mappedBy = "user", cascade = {ALL}, orphanRemoval = true)
     private List<FoodInTake> foodInTakeList = new ArrayList<>();
 

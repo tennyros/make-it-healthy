@@ -8,7 +8,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import java.time.LocalDate;
 
 @Schema(description = "User profile information response")
-public record UserResponseDto(
+public record UserResponse(
 
         @Schema(description = "Unique user identifier", example = "456")
         Long id,
@@ -30,10 +30,10 @@ public record UserResponseDto(
 
         @Schema(description = "Fitness goal",
                 allowableValues = {"WEIGHT_LOSS", "MAINTENANCE", "MUSCLE_GAIN"})
-        Goal goal,
+        Goal goal
 
-        @Schema(description = "Account creation date", example = "2025-04-05")
-        @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-        LocalDate createdAt
+//        @Schema(description = "Account creation date", example = "2025-04-05")
+//        @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+//        LocalDate createdAt
 ) {
 }

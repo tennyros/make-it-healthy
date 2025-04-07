@@ -1,22 +1,18 @@
-server:
-  port: 8008
-spring:
-  application:
-    name: make-it-healthy
-  datasource:
-    url: jdbc:${DB_BASE}://${DB_SERVER}:${DB_PORT}/${DB_NAME}
-    username: ${DB_USERNAME}
-    password: ${DB_PASSWORD}
-
-  jpa:
-    open-in-view: false
-    show-sql: true
-    properties:
+  server:
+    port: 8008
+  spring:
+    application:
+      name: make-it-healthy
+    datasource:
+      driver-class-name: org.postgresql.Driver
+    jpa:
+      open-in-view: false
+      show-sql: true
+      properties:
+        hibernate:
+          format_sql: true
       hibernate:
-        format_sql: true
-        dialect: org.hibernate.dialect.PostgreSQLDialect
-    hibernate:
-      ddl-auto: none
-  liquibase:
-    enabled: true
-    change-log: classpath:/db/changelog/db.changelog-master.yaml
+        ddl-auto: none
+    liquibase:
+      enabled: true
+      change-log: classpath:/db/changelog/db.changelog-master.yaml

@@ -6,7 +6,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Schema(description = "Detailed daily nutrition report")
-public record DailyReportDto(
+public record DailyReport(
 
         @Schema(description = "Report date in YYYY-MM-DD format", example = "2023-10-20")
         LocalDate date,
@@ -21,6 +21,6 @@ public record DailyReportDto(
         boolean isGoalAchieved,
 
         @Schema(description = "Meal breakdown by eating time")
-        List<MealTimeSummaryDto> meals
+        List<MealTimeSummary> meals
 ) {
 }

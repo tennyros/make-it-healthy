@@ -10,16 +10,17 @@ import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 @Schema(description = "Request payload for user registration")
-public record UserCreateDto(
+public record UserRequest(
 
-        @Schema(description = "Full name of the user", example = "John Doe")
-        @NotBlank(message = "Username must be defined")
+        @Schema(description = "Full name of the user", example = "John Doe", minLength = 2, maxLength = 64)
+        @NotBlank(message = "Name must be defined") @Size(min = 2, max = 64, message = "Name is invalid")
         String name,
 
         @Schema(description = "Valid email address", example = "user@example.com")
-        @NotBlank @Email(message = "Email must be valid")
+        @NotBlank @Email(message = "Email must be valid") @Size(max = 255, message = "Email is too long")
         String email,
 
         @Schema(description = "Age in years (14-115)", example = "30")

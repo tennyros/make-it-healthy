@@ -6,7 +6,7 @@ import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotBlank;
 
 @Schema(description = "Request payload for creating a new meal")
-public record MealCreateDto(
+public record MealRequest(
 
         @Schema(description = "Name of the meal", example = "Greek Yogurt with Berries")
         @NotBlank(message = "Meal name must be defined")
