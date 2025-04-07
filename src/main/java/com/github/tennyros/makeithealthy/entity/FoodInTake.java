@@ -50,6 +50,7 @@ public class FoodInTake {
     @ManyToOne(fetch = FetchType.LAZY)
     private User user;
 
+    @Builder.Default
     @ManyToMany
     @JoinTable(
             name = "food_in_take_meals",
