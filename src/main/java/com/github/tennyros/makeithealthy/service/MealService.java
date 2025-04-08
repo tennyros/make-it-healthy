@@ -20,12 +20,12 @@ public class MealService {
     private final MealMapper mapper;
 
     @Transactional(readOnly = true)
-    public Optional<MealResponse> getMealById(Long id) {
+    public Optional<MealResponse> getMeal(Long id) {
         return mealRepo.findById(id)
                 .map(mapper::toResponse);
     }
 
-    public MealResponse create(MealRequest mealRequest) {
+    public MealResponse createMeal(MealRequest mealRequest) {
         if (mealRepo.existsByName(mealRequest.name())) {
             throw new MealAlreadyExistException("Meal already exists");
         }

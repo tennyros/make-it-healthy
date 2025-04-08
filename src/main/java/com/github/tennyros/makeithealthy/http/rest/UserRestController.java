@@ -1,7 +1,6 @@
 package com.github.tennyros.makeithealthy.http.rest;
 
 import com.github.tennyros.makeithealthy.dto.request.UserRequest;
-import com.github.tennyros.makeithealthy.dto.response.MealResponse;
 import com.github.tennyros.makeithealthy.dto.response.UserResponse;
 import com.github.tennyros.makeithealthy.exception.UserNotFoundException;
 import com.github.tennyros.makeithealthy.service.UserService;
@@ -11,7 +10,6 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.ErrorResponse;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,8 +29,8 @@ public class UserRestController {
     private final UserService userService;
 
     @PostMapping
-    public ResponseEntity<UserResponse> create(@RequestBody UserRequest user) {
-        UserResponse userResponse = userService.create(user);
+    public ResponseEntity<UserResponse> createUser(@RequestBody UserRequest user) {
+        UserResponse userResponse = userService.createUser(user);
 
         URI location = URI.create("/users/" + userResponse.id());
         return ResponseEntity
@@ -48,8 +46,8 @@ public class UserRestController {
                     content = @Content(schema = @Schema(implementation = ErrorResponse.class)))
     })
     @GetMapping("/{id}")
-    public ResponseEntity<UserResponse> get(@PathVariable Long id) {
-        UserResponse response = userService.getUserById(id)
+    public ResponseEntity<UserResponse> getUser(@PathVariable Long id) {
+        UserResponse response = userService.getUser(id)
                 .orElseThrow(() -> new UserNotFoundException("User with id " + id + " not found"));
         return ResponseEntity.ok(response);
     }
