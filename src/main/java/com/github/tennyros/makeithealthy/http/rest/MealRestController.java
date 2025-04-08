@@ -10,6 +10,7 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.ErrorResponse;
@@ -30,8 +31,8 @@ public class MealRestController {
     private final MealService mealService;
 
     @PostMapping
-    public ResponseEntity<MealResponse> create(@RequestBody MealRequest meal) {
-        MealResponse mealResponse = mealService.create(meal);
+    public ResponseEntity<MealResponse> createMeal(@Valid @RequestBody MealRequest meal) {
+        MealResponse mealResponse = mealService.createMeal(meal);
 
         URI location = URI.create("/meals/" + mealResponse.id());
         return ResponseEntity
@@ -47,8 +48,8 @@ public class MealRestController {
                     content = @Content(schema = @Schema(implementation = ErrorResponse.class)))
     })
     @GetMapping("/{id}")
-    public ResponseEntity<MealResponse> get(@PathVariable Long id) {
-        MealResponse response = mealService.getMealById(id)
+    public ResponseEntity<MealResponse> getMeal(@PathVariable Long id) {
+        MealResponse response = mealService.getMeal(id)
                 .orElseThrow(() -> new MealNotFoundException("Meal with id " + id + " not found"));
         return ResponseEntity.ok(response);
     }

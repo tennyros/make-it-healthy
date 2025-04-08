@@ -30,7 +30,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "food_in_take")
-public class FoodInTake {
+public class FoodIntake {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

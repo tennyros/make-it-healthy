@@ -61,6 +61,6 @@ public class User {
 
     @Builder.Default
     @OneToMany(mappedBy = "user", cascade = {ALL}, orphanRemoval = true)
-    private List<FoodInTake> foodInTakeList = new ArrayList<>();
+    private List<FoodIntake> foodIntakeList = new ArrayList<>();
 
 }

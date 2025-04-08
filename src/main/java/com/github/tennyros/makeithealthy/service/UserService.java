@@ -6,7 +6,6 @@ import com.github.tennyros.makeithealthy.entity.User;
 import com.github.tennyros.makeithealthy.exception.EmailAlreadyExistsException;
 import com.github.tennyros.makeithealthy.mapper.UserMapper;
 import com.github.tennyros.makeithealthy.repository.UserRepository;
-import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,12 +22,12 @@ public class UserService {
     private final CalorieCalculationService calorieCalculationService;
 
     @Transactional(readOnly = true)
-    public Optional<UserResponse> getUserById(Long id) {
+    public Optional<UserResponse> getUser(Long id) {
         return userRepo.findById(id)
                 .map(mapper::toResponse);
     }
 
-    public UserResponse create(@Valid UserRequest userRequest) {
+    public UserResponse createUser(UserRequest userRequest) {
         if (userRepo.existsByEmail(userRequest.email())) {
             throw new EmailAlreadyExistsException("Email already exists");
         }

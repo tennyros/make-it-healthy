@@ -39,6 +39,6 @@ public class Meal {
 
     @Builder.Default
     @ManyToMany(mappedBy = "meals")
-    private List<FoodInTake> foodInTakes = new ArrayList<>();
+    private List<FoodIntake> foodIntakes = new ArrayList<>();
 
 }

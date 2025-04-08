@@ -4,10 +4,9 @@ import com.github.tennyros.makeithealthy.entity.MealType;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
-public record FoodInTakeRequest(
+public record FoodIntakeRequest(
 
         @NotNull Long userId,
         @NotNull MealType mealType,
