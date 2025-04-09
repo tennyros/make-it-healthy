@@ -12,8 +12,8 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ProblemDetail;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.ErrorResponse;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -30,6 +30,18 @@ public class MealRestController {
 
     private final MealService mealService;
 
+    @Operation(summary = "Create a new meal")
+    @ApiResponses({
+            @ApiResponse(responseCode = "201", description = "Meal successfully created",
+                    content = @Content(mediaType = "application/json",
+                            schema = @Schema(implementation = MealResponse.class))),
+            @ApiResponse(responseCode = "400", description = "Validation error",
+                    content = @Content(mediaType = "application/problem+json",
+                            schema = @Schema(implementation = ProblemDetail.class))),
+            @ApiResponse(responseCode = "409", description = "Meal already exists",
+                    content = @Content(mediaType = "application/problem+json",
+                            schema = @Schema(implementation = ProblemDetail.class)))
+    })
     @PostMapping
     public ResponseEntity<MealResponse> createMeal(@Valid @RequestBody MealRequest meal) {
         MealResponse mealResponse = mealService.createMeal(meal);
@@ -43,9 +55,11 @@ public class MealRestController {
     @Operation(summary = "Get meal by ID")
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "Meal found",
-                    content = @Content(schema = @Schema(implementation = UserResponse.class))),
+                    content = @Content(mediaType = "application/json",
+                            schema = @Schema(implementation = MealResponse.class))),
             @ApiResponse(responseCode = "404", description = "Meal not found",
-                    content = @Content(schema = @Schema(implementation = ErrorResponse.class)))
+                    content = @Content(mediaType = "application/problem+json",
+                            schema = @Schema(implementation = ProblemDetail.class)))
     })
     @GetMapping("/{id}")
     public ResponseEntity<MealResponse> getMeal(@PathVariable Long id) {

@@ -3,7 +3,7 @@ package com.github.tennyros.makeithealthy.service;
 import com.github.tennyros.makeithealthy.dto.request.UserRequest;
 import com.github.tennyros.makeithealthy.dto.response.UserResponse;
 import com.github.tennyros.makeithealthy.entity.User;
-import com.github.tennyros.makeithealthy.exception.EmailAlreadyExistsException;
+import com.github.tennyros.makeithealthy.exception.UserAlreadyExistsException;
 import com.github.tennyros.makeithealthy.mapper.UserMapper;
 import com.github.tennyros.makeithealthy.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -29,7 +29,7 @@ public class UserService {
 
     public UserResponse createUser(UserRequest userRequest) {
         if (userRepo.existsByEmail(userRequest.email())) {
-            throw new EmailAlreadyExistsException("Email already exists");
+            throw new UserAlreadyExistsException("User with such email already exists");
         }
 
         User user = mapper.toEntity(userRequest);

@@ -13,8 +13,9 @@ import java.util.List;
 public interface FoodIntakeRepository extends JpaRepository<FoodIntake, Long> {
 
     List<FoodIntake> findByUserAndDate(@Param("user") User user, @Param("date") LocalDate date);
+
     List<FoodIntake> findByUserAndDateBetween(@Param("user") User user,
-                                              @Param("date") LocalDate startDate,
-                                              @Param("date") LocalDate endDate);
+                                              @Param("start") LocalDate startDate,
+                                              @Param("end") LocalDate endDate);
 
 }
