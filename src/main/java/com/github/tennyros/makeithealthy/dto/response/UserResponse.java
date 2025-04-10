@@ -1,11 +1,8 @@
 package com.github.tennyros.makeithealthy.dto.response;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.github.tennyros.makeithealthy.entity.Gender;
 import com.github.tennyros.makeithealthy.entity.Goal;
 import io.swagger.v3.oas.annotations.media.Schema;
-
-import java.time.LocalDate;
 
 import static io.swagger.v3.oas.annotations.media.Schema.RequiredMode.REQUIRED;
 
@@ -34,8 +31,5 @@ public record UserResponse(
                 allowableValues = {"WEIGHT_LOSS", "MAINTENANCE", "MUSCLE_GAIN"}, requiredMode = REQUIRED)
         Goal goal
 
-//        @Schema(description = "Account creation date", example = "2025-04-05")
-//        @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-//        LocalDate createdAt
 ) {
 }

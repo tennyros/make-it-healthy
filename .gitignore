@@ -37,3 +37,6 @@ docker-compose.yml
 
 ### .env file ###
 .env
+
+### GitHub act local ###
+.secrets

@@ -2,7 +2,6 @@ package com.github.tennyros.makeithealthy.http.rest;
 
 import com.github.tennyros.makeithealthy.dto.request.MealRequest;
 import com.github.tennyros.makeithealthy.dto.response.MealResponse;
-import com.github.tennyros.makeithealthy.dto.response.UserResponse;
 import com.github.tennyros.makeithealthy.exception.MealNotFoundException;
 import com.github.tennyros.makeithealthy.service.MealService;
 import io.swagger.v3.oas.annotations.Operation;

@@ -57,7 +57,7 @@ public class UserRestController {
                     content = @Content(mediaType = "application/json",
                             schema = @Schema(implementation = UserResponse.class))),
             @ApiResponse(responseCode = "404", description = "User not found",
-                    content = @Content(mediaType = "application/json",
+                    content = @Content(mediaType = "application/problem+json",
                             schema = @Schema(implementation = ProblemDetail.class)))
     })
     @GetMapping("/{id}")

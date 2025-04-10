@@ -18,10 +18,6 @@ public interface MealMapper {
     @Mapping(target = "nutritionalInfo.fats", source = "fats")
     Meal toEntity(MealRequest dto);
 
-    MealRequest toRequest(Meal meal);
-
-    Meal toEntity(MealResponse dto);
-
     @Mapping(target = "nutritionalInfoDto.calories", source = "nutritionalInfo.calories")
     @Mapping(target = "nutritionalInfoDto.proteins", source = "nutritionalInfo.proteins")
     @Mapping(target = "nutritionalInfoDto.carbs", source = "nutritionalInfo.carbs")
