@@ -1,5 +1,7 @@
 # Make it Healthy
 
+![CI Status](https://github.com/tennyros/make-it-healthy/workflows/CI%20Pipeline%20with%20Maven/badge.svg)
+![Coverage](https://github.com/tennyros/make-it-healthy/raw/coverage-badge/.github/badges/jacoco.svg)
 ![Java 17](https://img.shields.io/badge/Java-17-blue)
 ![Spring Boot 3.4.4](https://img.shields.io/badge/Spring_Boot-3.4.4-brightgreen)
 
@@ -7,18 +9,18 @@
 
 ## Tech Stack
 
-| Component                          | Version | Purpose                                             |
-|------------------------------------|---------|-----------------------------------------------------|
-| Spring Boot                        | 3.4.4   | Backend framework                                   |
-| Hibernate ORM<br>(Spring Data JPA) | 6.6.11  | ORM framework for managing<br>Java persistence with |
-| Maven (wrapper)                    | 3.9.9   | Project build tool                                  |
-| PostgreSQL                         | 15+     | Database management system                          |
-| Liquibase                          | 4.33.1  | Database migrations                                 |
-| MapStruct                          | 1.6.3   | Object mapping (DTO/Entity)                         |
-| JUnit 5                            | 5.11.4  | Test framework for unit tests                       |
-| Mockito                            | 5.14.2  | Test framework for mocking in unit tests            |
-| JaCoCo                             | 0.8.13  | Test coverage reports                               |
-| Springdoc OpenAPI                  | 2.8.6   | API documentation (Swagger UI for Spring)           |
+| Component                       | Version | Purpose                                          |
+|---------------------------------|---------|--------------------------------------------------|
+| Spring Boot                     | 3.4.4   | Backend framework                                |
+| Hibernate ORM (Spring Data JPA) | 6.6.11  | ORM framework for managing Java persistence with |
+| Maven (wrapper)                 | 3.9.9   | Project build tool                               |
+| PostgreSQL                      | 15+     | Database management system                       |
+| Liquibase                       | 4.33.1  | Database migrations                              |
+| MapStruct                       | 1.6.3   | Object mapping (DTO/Entity)                      |
+| JUnit 5                         | 5.11.4  | Test framework for unit tests                    |
+| Mockito                         | 5.14.2  | Test framework for mocking in unit tests         |
+| JaCoCo                          | 0.8.13  | Test coverage reports                            |
+| Springdoc OpenAPI               | 2.8.6   | API documentation (Swagger UI for Spring)        |
 
 ## Project Structure
 
@@ -26,7 +28,7 @@
 src/
 ├── main/
 │   ├── java/
-│   │   └── com/github/tennyros/makeithealthy
+│   │   └── com/github/tennyros/makeithealthy/
 │   │       ├── config/      # Configurations
 │   │       ├── dto/         # Data Transfer Objects
 │   │       │   ├── request/     # Request DTOs
@@ -47,7 +49,7 @@ src/
 │       └── application-prod.yml  # Production configuration
 ├── test/
 │   ├── java/
-│   │   └── com/example/healthy/
+│   │   └── com/github/tennyros/makeithealthy/
 │   │       └── unit/        # Unit tests
 │   └── resources/
 │       └── application-test.yml  # Test configuration
@@ -86,7 +88,7 @@ cp docker-compose.example.yml docker-compose.yml
 docker-compose up -d
 ```
 
-**3. Run the application:**
+**4. Run the application:**
 
 ```bash
 ./mvnw spring-boot:run
