@@ -17,8 +17,6 @@ public record FoodIntakeRequest(
                 allowableValues = {"BREAKFAST", "LUNCH", "DINNER", "SNACK"})
         @NotNull MealType mealType,
 
-//        @NotNull LocalDateTime intakeTime,
-
         @Schema(description = "List of meal IDs associated with this food intake")
         @NotEmpty List<Long> mealIds
 
