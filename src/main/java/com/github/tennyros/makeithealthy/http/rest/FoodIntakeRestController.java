@@ -29,7 +29,7 @@ public class FoodIntakeRestController {
 
     @Operation(summary = "Create food intake record")
     @ApiResponses({
-            @ApiResponse(responseCode = "200", description = "Successfully created food intake",
+            @ApiResponse(responseCode = "201", description = "Successfully created food intake",
                     content = @Content(mediaType = "application/json",
                             schema = @Schema(implementation = FoodIntakeResponse.class))),
             @ApiResponse(responseCode = "400", description = "Validation failed",

@@ -65,7 +65,7 @@ class UserServiceTest {
 
     @Test
     void createUser_shouldThrowIfExists() {
-        when(userRepo.existsByEmail("test@example.com")).thenReturn(true);
+        when(userRepo.existsByEmail(EMAIL)).thenReturn(true);
 
         assertThrows(UserAlreadyExistsException.class, () -> userService.createUser(userRequest));
     }
@@ -80,7 +80,7 @@ class UserServiceTest {
                 .gender(GENDER).weight(WEIGHT).height(HEIGHT).goal(Goal.MAINTENANCE).dailyCalorieNorm(NORM)
                 .build();
 
-        when(userRepo.existsByEmail("test@example.com")).thenReturn(false);
+        when(userRepo.existsByEmail(EMAIL)).thenReturn(false);
         when(mapper.toEntity(userRequest)).thenReturn(user);
         when(calorieCalculationService.calculateDailyNorm(user)).thenReturn(NORM);
         when(userRepo.save(user)).thenReturn(savedUser);
