@@ -15,7 +15,7 @@
 | Hibernate ORM (Spring Data JPA) | 6.6.11  | ORM framework for managing Java persistence with |
 | Maven (wrapper)                 | 3.9.9   | Project build tool                               |
 | PostgreSQL                      | 15+     | Database management system                       |
-| Liquibase                       | 4.33.1  | Database migrations                              |
+| Liquibase                       | 4.31.1  | Database migrations                              |
 | MapStruct                       | 1.6.3   | Object mapping (DTO/Entity)                      |
 | JUnit 5                         | 5.11.4  | Test framework for unit tests                    |
 | Mockito                         | 5.14.2  | Test framework for mocking in unit tests         |
@@ -25,6 +25,7 @@
 ## Project Structure
 
 ```text
+Source code structure (dev branch):
 src/
 ├── main/
 │   ├── java/
@@ -53,6 +54,14 @@ src/
 │   │       └── unit/        # Unit tests
 │   └── resources/
 │       └── application-test.yml  # Test configuration
+pom.xml
+
+Build artifacts:
+target/
+├── generated-sources/
+│   ├── annotations/
+│   │   └── com.github.tennyros.makeithealthy.mapper/  # Auto-generated MapStruct classes
+├── reports-report/  # JaCoCo coverage reports
 ```
 
 ## Quick Start
@@ -68,11 +77,11 @@ src/
 **1. Clone the repository:**
 
 ```bash
-git clone https://github.com/yourusername/make-it-healthy.git
+git clone https://github.com/tennyros/make-it-healthy.git
 cd make-it-healthy
 ```
 
-**2. Copy .env file:**
+**2. Copy the .env file and change the credentials if necessary:**
 
 ```bash
 cp .env.example .env
@@ -86,12 +95,29 @@ cp docker-compose.example.yml docker-compose.yml
 
 # Start PostgreSQL in Docker  
 docker-compose up -d
+
+If using docker-compose, PostgreSQL will be available at 
+localhost:5433 (default credentials: postgres/root).
+
+If you already have PostgreSQL, ensure application.yml/.env matches your DB settings.
 ```
 
-**4. Run the application:**
+**4. Application build:**
 
 ```bash
-./mvnw spring-boot:run
+./mvnw clean install -Dspring.profiles.active=dev
+```
+
+**5. Run the application:**
+
+```bash
+# Run via terminal:
+./mvnw spring-boot:run -Dspring-boot.run.profiles=dev
+
+# Run via Intellij Idea (Shift + F10):
+Type dev in Active profiles Edit Configurations of main class to setup profile
+
+Application port is 8008
 ```
 
 **After this, the API will be available at:**
@@ -112,14 +138,15 @@ unit/ - Unit tests
 
 ```bash
 # All tests
-./mvnw test
+./mvnw test -Dspring.profiles.active=test
 
 # Run a specific test
-./mvnw test -Dtest=YourTestName
+./mvnw test -Dspring.profiles.active=test -Dtest=YourTestName
 ```
 
 ## CI Pipeline
 
 ```text
-The project is set up with CI to automatically build and test on pull requests using GitHub Actions.
+The project is set up with CI to automatically build 
+and test on pull requests using GitHub Actions.
 ```

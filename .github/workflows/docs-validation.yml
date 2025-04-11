@@ -1,0 +1,36 @@
+name: Docs Validation
+
+on:
+  push:
+    branches: [ 'docs/**' ]
+  pull_request:
+    branches: [ 'dev' ]
+    paths: [ 'README*.md', '**.md' ]
+
+jobs:
+  markdown-check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: |
+          npm install -g markdown-link-check@3.10.0 markdownlint-cli@0.32.2
+          echo '{"ignorePatterns": [{"pattern": "^https://localhost"}]}' > mlc_config.json
+
+      - name: Lint Markdown
+        run: |
+          markdownlint '**/*.md' --disable MD013 MD041 --ignore .github
+
+      - name: Check links
+        run: |
+          for file in $(find . -name '*.md' -not -path './.github/*'); do
+            markdown-link-check -c mlc_config.json "$file" || true
+          done
