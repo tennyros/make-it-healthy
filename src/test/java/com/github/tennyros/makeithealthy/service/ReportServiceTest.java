@@ -88,7 +88,7 @@ class ReportServiceTest {
 
 
     @Test
-    void getHistory_shouldReturnSummarizedList() {
+    void getNutritionHistory_shouldReturnSummarizedList() {
         User user = new User();
         user.setDailyCalorieNorm(2000.0);
 
@@ -113,7 +113,7 @@ class ReportServiceTest {
     }
 
     @Test
-    void getHistory_shouldMarkGoalNotAchievedIfExceeded() {
+    void getNutritionHistory_shouldMarkGoalNotAchievedIfExceeded() {
         User user = new User();
         user.setDailyCalorieNorm(1000.0);
 
