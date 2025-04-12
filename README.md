@@ -52,6 +52,8 @@ src/
 │   ├── java/
 │   │   └── com/github/tennyros/makeithealthy/
 │   │       └── unit/        # Unit tests
+│   │           ├── controller/   # Controller layer unit tests
+│   │           └── service/      # Service layer unit tests
 │   └── resources/
 │       └── application-test.yml  # Test configuration
 pom.xml

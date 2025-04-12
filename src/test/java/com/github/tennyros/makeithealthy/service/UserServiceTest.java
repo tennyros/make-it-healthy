@@ -34,10 +34,10 @@ class UserServiceTest {
     private static final Goal GOAL = Goal.MAINTENANCE;
     private static final Gender GENDER = Gender.MALE;
 
-    private final UserRequest userRequest = new UserRequest(NAME, EMAIL,
+    private final UserRequest request = new UserRequest(NAME, EMAIL,
             AGE, GENDER, WEIGHT, HEIGHT, GOAL);
 
-    private final UserResponse userResponse = new UserResponse(
+    private final UserResponse response = new UserResponse(
             ID, NAME, EMAIL, AGE,
             GENDER, NORM, GOAL
     );
@@ -48,26 +48,26 @@ class UserServiceTest {
 
     @Mock private CalorieCalculationService calorieCalculationService;
 
-    @InjectMocks private UserService userService;
+    @InjectMocks private UserService service;
 
     @Test
     void getUser_shouldReturnUserResponse() {
         User user = new User();
 
         when(userRepo.findById(ID)).thenReturn(Optional.of(user));
-        when(mapper.toResponse(user)).thenReturn(userResponse);
+        when(mapper.toResponse(user)).thenReturn(response);
 
-        Optional<UserResponse> result = userService.getUser(ID);
+        Optional<UserResponse> result = service.getUser(ID);
 
         assertTrue(result.isPresent());
-        assertEquals(userResponse, result.get());
+        assertEquals(response, result.get());
     }
 
     @Test
     void createUser_shouldThrowIfExists() {
         when(userRepo.existsByEmail(EMAIL)).thenReturn(true);
 
-        assertThrows(UserAlreadyExistsException.class, () -> userService.createUser(userRequest));
+        assertThrows(UserAlreadyExistsException.class, () -> service.createUser(request));
     }
 
     @Test
@@ -81,14 +81,14 @@ class UserServiceTest {
                 .build();
 
         when(userRepo.existsByEmail(EMAIL)).thenReturn(false);
-        when(mapper.toEntity(userRequest)).thenReturn(user);
+        when(mapper.toEntity(request)).thenReturn(user);
         when(calorieCalculationService.calculateDailyNorm(user)).thenReturn(NORM);
         when(userRepo.save(user)).thenReturn(savedUser);
-        when(mapper.toResponse(savedUser)).thenReturn(userResponse);
+        when(mapper.toResponse(savedUser)).thenReturn(response);
 
-        UserResponse result = userService.createUser(userRequest);
+        UserResponse result = service.createUser(request);
 
-        assertEquals(userResponse, result);
+        assertEquals(response, result);
         verify(userRepo).save(user);
     }
 
