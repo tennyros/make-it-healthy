@@ -1,0 +1,415 @@
+{
+	"info": {
+		"_postman_id": "2d90fbf0-1425-42c2-a818-dae70442c035",
+		"name": "make-it-healthy-app",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29013235"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Create User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"John\",\n    \"email\": \"john@gmail.com\",\n    \"age\": \"30\",\n    \"gender\": \"MALE\",\n    \"weight\": \"75.1\",\n    \"height\": \"175.1\",\n    \"goal\": \"MAINTENANCE\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/v1/users",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users"
+							]
+						},
+						"description": "Create new user.\n\n🟢 201 Created — user successfully created  \n🔴 400 Bad Request — validation exception  \n🔴 409 Conflict — user already exists"
+					},
+					"response": []
+				},
+				{
+					"name": "Get User by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v1/users/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"1"
+							]
+						},
+						"description": "Get user by id.\n\n🟢 200 OK — user successfully found  \n🔴 404 Not Found — user not found"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Meals",
+			"item": [
+				{
+					"name": "Create Meal Chicken Nuggets",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Chicken Nuggets\",\n    \"caloriesPerSaving\": \"259\",\n    \"proteins\": \"24.5\",\n    \"carbs\": \"8.8\",\n    \"fats\": \"13.6\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/v1/meals",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"meals"
+							]
+						},
+						"description": "Create new meal.\n\n🟢 201 Created — meal successfully created  \n🔴 400 Bad Request — validation exception  \n🔴 409 Conflict — meal already exists"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Meal Spaghetti",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Spaghetti\",\n    \"caloriesPerSaving\": \"359\",\n    \"proteins\": \"12.6\",\n    \"carbs\": \"71.6\",\n    \"fats\": \"1.3\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/v1/meals",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"meals"
+							]
+						},
+						"description": "Create new meal.\n\n🟢 201 Created — meal successfully created  \n🔴 400 Bad Request — validation exception  \n🔴 409 Conflict — meal already exists"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Meal by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v1/meals/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"meals",
+								"1"
+							]
+						},
+						"description": "Get meal by id.\n\n🟢 200 OK — meal successfully found  \n🔴 404 Not Found — meal not found"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "FoodIntake",
+			"item": [
+				{
+					"name": "Create FoodIntake Breakfast",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"userId\": 1,\n  \"mealType\": \"BREAKFAST\",\n  \"mealIds\": [1, 2]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/v1/intakes",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"intakes"
+							]
+						},
+						"description": "Create new food intake.\n\n🟢 201 Created — food intake successfully created  \n🔴 400 Bad Request — validation exception"
+					},
+					"response": []
+				},
+				{
+					"name": "Create FoodIntake Dinner",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"userId\": 1,\n  \"mealType\": \"DINNER\",\n  \"mealIds\": [1, 2]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/v1/intakes",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"intakes"
+							]
+						},
+						"description": "Create new food intake.\n\n🟢 201 Created — food intake successfully created  \n🔴 400 Bad Request — validation exception"
+					},
+					"response": []
+				},
+				{
+					"name": "Get FoodIntake by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v1/intakes/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"intakes",
+								"1"
+							]
+						},
+						"description": "Get food intake by id.\n\n🟢 200 OK — food intake successfully found  \n🔴 404 Not Found — food intake not found"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Reports",
+			"item": [
+				{
+					"name": "Get DailyReport by date",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v1/reports/daily?userId=1&date=2025-04-09",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"reports",
+								"daily"
+							],
+							"query": [
+								{
+									"key": "userId",
+									"value": "1"
+								},
+								{
+									"key": "date",
+									"value": "2025-04-09"
+								}
+							]
+						},
+						"description": "Get daily report.\n\n🟢 200 OK — successfully generated daily report  \n🔴 404 Not Found — user not found"
+					},
+					"response": []
+				},
+				{
+					"name": "Get History by date range",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/v1/reports/history?userId=1&start=2025-04-08&end=2026-05-09",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"reports",
+								"history"
+							],
+							"query": [
+								{
+									"key": "userId",
+									"value": "1"
+								},
+								{
+									"key": "start",
+									"value": "2025-04-08"
+								},
+								{
+									"key": "end",
+									"value": "2026-05-09"
+								}
+							]
+						},
+						"description": "Get nutrition history.\n\n🟢 200 OK — successfully fetched nutrition history  \n🔴 404 Not Found — user not found"
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "http://localhost:8008",
+			"type": "string"
+		}
+	]
+}

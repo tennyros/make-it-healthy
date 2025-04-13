@@ -56,6 +56,7 @@ src/
 │   │           └── service/      # Service layer unit tests
 │   └── resources/
 │       └── application-test.yml  # Test configuration
+├── postman/  # json Postman API test collection
 pom.xml
 
 Build artifacts:
@@ -145,6 +146,23 @@ unit/ - Unit tests
 # Run a specific test
 ./mvnw test -Dspring.profiles.active=test -Dtest=YourTestName
 ```
+
+## API Testing with Postman
+
+You can test and explore the API using the included Postman collection.
+
+### Included File
+
+- **make-it-healthy-app.postman_collection.json** – API requests for user, meal, food intake, and reporting operations.
+
+### How to Use
+
+1. Install Postman – [Download here](https://www.postman.com/downloads/).
+2. Open Postman → `File > Import` → Choose the `make-it-healthy-app.postman_collection.json` file.
+3. Click on the variable `{{url}}` in any request and set it to your running API base URL (e.g., `http://localhost:8008`).
+4. Click **Send** to test endpoints.
+
+> ℹ️ The collection already includes the `{{url}}` variable pointing to `http://localhost:8008`. You can edit it if needed.
 
 ## CI Pipeline
 
