@@ -56,6 +56,7 @@ src/
 │   │           └── service/      # Юнит-тесты бизнес слоя
 │   └── resources/
 │       └── application-test.yml  # Конфигурация для тестирования
+├── postman/  # json Postman API тест-коллекция
 pom.xml
 
 Собранные артефакты:
@@ -146,6 +147,23 @@ unit/ - Юнит-тесты
 # Запуск конкретного теста
 ./mvnw test -Dspring.profiles.active=test -Dtest=YourTestName
 ```
+
+## Тестирование API с помощью Postman
+
+Вы можете протестировать и изучить API, используя прилагаемую коллекцию Postman.
+
+### Прилагаемый файл
+
+- **make-it-healthy-app.postman_collection.json** – запросы API для пользователей, приёмов пищи, блюд и отчётности.
+
+### Как использовать
+
+1. Установите Postman – [Скачать здесь](https://www.postman.com/downloads/).
+2. Откройте Postman → `File > Import` → выберите файл `make-it-healthy-app.postman_collection.json`.
+3. В любом запросе нажмите на переменную `{{url}}` и задайте базовый URL работающего API (например, `http://localhost:8008`).
+4. Нажмите **Send**, чтобы выполнить запрос и посмотреть ответ.
+
+> ℹ️ Коллекция уже содержит переменную `{{url}}`, указывающую на `http://localhost:8008`. При необходимости её можно изменить.
 
 ## CI Pipeline
 

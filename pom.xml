@@ -137,7 +137,6 @@
                         <exclude>**/config/**</exclude>
                         <exclude>**/entity/**</exclude>
                         <exclude>**/dto/**</exclude>
-<!--                        <exclude>**/exception/**</exclude>-->
 <!--                        <exclude>**/advice/**</exclude>-->
                         <exclude>**/mapper/**</exclude>
                     </excludes>
