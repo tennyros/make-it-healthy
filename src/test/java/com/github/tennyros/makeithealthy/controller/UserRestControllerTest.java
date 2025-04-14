@@ -76,5 +76,29 @@ class UserRestControllerTest {
         mockMvc.perform(get("/api/v1/users/1"))
                 .andExpect(status().isNotFound());
     }
+
+    @Test
+    void shouldReturnBadRequestWhenEmailIsInvalid() throws Exception {
+        mockMvc.perform(post("/api/v1/users")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("""
+                                    {
+                                        "name": "John Doe",
+                                        "email": "",
+                                        "age": 30,
+                                        "gender": "MALE",
+                                        "weight": 75.0,
+                                        "height": 180.0,
+                                        "goal": "MAINTENANCE"
+                                    }
+                                """))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.title").value("Validation failed"))
+                .andExpect(jsonPath("$.errors").isArray())
+                .andExpect(jsonPath("$.errors[0].field").value("email"))
+                .andExpect(jsonPath("$.errors[0].message").exists())
+                .andExpect(jsonPath("$.errors[0].rejectedValue").value(""));
+    }
+
 }
 
